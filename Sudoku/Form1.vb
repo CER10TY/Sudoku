@@ -516,7 +516,7 @@
                     End Try
 
                     ' Tooltip display
-                    SetToolTip(col, row, possible(col, row))
+                    'SetToolTip(col, row, possible(col, row)) ' Wrong placement - the function quits after one iteration if HintMode, leaving the tool tip stranded. View HelpToolTips subroutine instead.
                     If possible(col, row).Length = 1 Then ' If possible(c,r) only has 1 value in it
                         SetCell(col, row, CInt(possible(col, row)), 1) ' Set the cell
                         ' Update vars and txtActivities
@@ -548,6 +548,7 @@
         Catch ex As Exception
             MessageBox.Show("Please undo your move", "Invalid move", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+        HelpToolTips()
     End Sub
 
     Private Sub btnSolvePuzzle_Click(sender As Object, e As EventArgs) Handles btnSolvePuzzle.Click
@@ -586,4 +587,15 @@
             Return False
         End If
     End Function
+    Public Sub HelpToolTips()
+        ' Proper placement - now contains ALL possible tool tips for ALL empty cells.
+        For row As Integer = 1 To 9
+            For col As Integer = 1 To 9
+                If actual(col, row) = 0 Then
+                    possible(col, row) = CalculatePossibleValues(col, row)
+                    SetToolTip(col, row, possible(col, row))
+                End If
+            Next
+        Next
+    End Sub
 End Class
