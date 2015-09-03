@@ -1,0 +1,33 @@
+c:\users\sj039\documents\visual studio 2013\Projects\Sudoku\Sudoku\bin\Debug\Sudoku.exe.config
+C:\Users\sj039\Documents\Visual Studio 2013\Projects\Sudoku\Sudoku\bin\Debug\Sudoku.exe
+C:\Users\sj039\Documents\Visual Studio 2013\Projects\Sudoku\Sudoku\bin\Debug\Sudoku.pdb
+C:\Users\sj039\Documents\Visual Studio 2013\Projects\Sudoku\Sudoku\bin\Debug\Sudoku.xml
+C:\Users\sj039\Documents\Visual Studio 2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.vbprojResolveAssemblyReference.cache
+C:\Users\sj039\Documents\Visual Studio 2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.SudokuForm.resources
+C:\Users\sj039\Documents\Visual Studio 2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.Resources.resources
+C:\Users\sj039\Documents\Visual Studio 2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.vbproj.GenerateResource.Cache
+C:\Users\sj039\Documents\Visual Studio 2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.exe
+C:\Users\sj039\Documents\Visual Studio 2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.xml
+C:\Users\sj039\Documents\Visual Studio 2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.pdb
+C:\Users\Soren\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\bin\Debug\Sudoku.exe.config
+C:\Users\Soren\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.exe
+C:\Users\Soren\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.xml
+C:\Users\Soren\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.pdb
+C:\Users\Soren\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.vbprojResolveAssemblyReference.cache
+C:\Users\Soren\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.SudokuForm.resources
+C:\Users\Soren\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.Resources.resources
+C:\Users\Soren\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.vbproj.GenerateResource.Cache
+C:\Users\Soren\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\bin\Debug\Sudoku.exe
+C:\Users\Soren\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\bin\Debug\Sudoku.pdb
+C:\Users\Soren\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\bin\Debug\Sudoku.xml
+C:\Users\sj039\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\bin\Debug\Sudoku.exe.config
+C:\Users\sj039\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.exe
+C:\Users\sj039\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.xml
+C:\Users\sj039\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.pdb
+C:\Users\sj039\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\bin\Debug\Sudoku.exe
+C:\Users\sj039\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\bin\Debug\Sudoku.pdb
+C:\Users\sj039\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\bin\Debug\Sudoku.xml
+C:\Users\sj039\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.vbprojResolveAssemblyReference.cache
+C:\Users\sj039\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.SudokuForm.resources
+C:\Users\sj039\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.Resources.resources
+C:\Users\sj039\Dropbox\PERSONAL DRIVE\VS2013\Projects\Sudoku\Sudoku\obj\Debug\Sudoku.vbproj.GenerateResource.Cache
