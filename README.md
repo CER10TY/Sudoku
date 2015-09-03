@@ -1,5 +1,5 @@
 # SUDOKU
-## Written in VB2013
+Written in VB2013
 
 ### OVERVIEW
 This program provides a basic user interface to play Sudoku. It is able to load predefined (explained further down below) Sudoku puzzles, as well as giving feedback and hints to the user.
