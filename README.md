@@ -21,9 +21,7 @@ Due to this, when creating a sudoku file, make sure to include 0's to fill out t
 
 ### DISCLAIMER
 This program is a part of the book "Programming Sudoku (Technology In Action)" by Wei-Meng Lee. 
-
 If you're planning on reading it, you should familiarise yourself with Visual Basic at least a bit before you do. This book goes in head first and often spends little time explaining the code, besides small comments.
-
 Instead, the book focuses on the mathematical and general approach to building, solving and also generating Sudoku puzzles. 
 
 You can buy the book on Amazon [here](http://www.amazon.com/Programming-Sudoku-Technology-Action-Wei-Meng/dp/1590596625/ref=sr_1_1?ie=UTF8&qid=1441307780&sr=8-1&keywords=programming+sudoku).
