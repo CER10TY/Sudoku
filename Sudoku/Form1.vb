@@ -199,6 +199,8 @@
         timerSolved.Enabled = True
         ToolStripStatusLabel1.Text = "New game started"
         CellToolTip.RemoveAll() ' Remove all cell tool tips.
+        HintToolTip.SetToolTip(btnHint, "Turn Hints ON/OFF") ' Hint button tooltip
+        HintToolTip.SetToolTip(btnSolvePuzzle, "Solve Puzzle") ' Solve Puzzle button tooltip
     End Sub
 
     Public Sub ClearBoard()
@@ -559,6 +561,12 @@
                 MessageBox.Show("Please undo your move", "Invalid move", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
             HelpToolTips()
+        ElseIf Not HintMode Then
+            For col As Integer = 1 To 9
+                For row As Integer = 1 To 9
+                    SetToolTip(col, row, String.Empty)
+                Next
+            Next
         End If
     End Sub
 
