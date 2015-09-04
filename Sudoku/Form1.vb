@@ -29,6 +29,7 @@
     Private GameStarted As Boolean = False
     ' Hint Mode - whether user wants to solve puzzle enirely or just get a hint
     Private HintMode As Boolean
+    Private HintVal As Integer = 0
     ' Keep track of possible solutions for cell. eg if cell(7,8) has possible solutions 2,3,5 possible(7,8) = 235
     Private possible(9, 9) As String
 
@@ -198,6 +199,8 @@
         timerSolved.Enabled = True
         ToolStripStatusLabel1.Text = "New game started"
         CellToolTip.RemoveAll() ' Remove all cell tool tips.
+        HintToolTip.SetToolTip(btnHint, "Turn Hints ON/OFF") ' Hint button tooltip
+        HintToolTip.SetToolTip(btnSolvePuzzle, "Solve Puzzle") ' Solve Puzzle button tooltip
     End Sub
 
     Public Sub ClearBoard()
@@ -542,13 +545,29 @@
 
     Private Sub btnHint_Click(sender As Object, e As EventArgs) Handles btnHint.Click
         ' When user clicks Hint Button
-        HintMode = True
-        Try
-            SolvePuzzle()
-        Catch ex As Exception
-            MessageBox.Show("Please undo your move", "Invalid move", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-        HelpToolTips()
+        If (HintVal Mod 2) = 0 Then
+            HintMode = True
+            HintVal += 1
+            'debug ToolStripStatusLabel1.Text = "Hint Mode ON"
+        Else
+            HintMode = False
+            HintVal += 1
+            'debug ToolStripStatusLabel1.Text = "Hint Mode OFF"
+        End If
+        If HintMode Then
+            Try
+                SolvePuzzle()
+            Catch ex As Exception
+                MessageBox.Show("Please undo your move", "Invalid move", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            HelpToolTips()
+        ElseIf Not HintMode Then
+            For col As Integer = 1 To 9
+                For row As Integer = 1 To 9
+                    SetToolTip(col, row, String.Empty)
+                Next
+            Next
+        End If
     End Sub
 
     Private Sub btnSolvePuzzle_Click(sender As Object, e As EventArgs) Handles btnSolvePuzzle.Click

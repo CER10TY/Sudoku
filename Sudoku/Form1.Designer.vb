@@ -66,6 +66,7 @@ Partial Class SudokuForm
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.timerSolved = New System.Windows.Forms.Timer(Me.components)
         Me.CellToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.HintToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.MainMenu.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -324,13 +325,13 @@ Partial Class SudokuForm
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(120, 17)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(121, 17)
         Me.ToolStripStatusLabel1.Text = "ToolStripStatusLabel1"
         '
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(120, 17)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(121, 17)
         Me.ToolStripStatusLabel2.Text = "ToolStripStatusLabel2"
         '
         'Label1
@@ -446,4 +447,5 @@ Partial Class SudokuForm
     Friend WithEvents toolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CellToolTip As ToolTip
+    Friend WithEvents HintToolTip As System.Windows.Forms.ToolTip
 End Class
