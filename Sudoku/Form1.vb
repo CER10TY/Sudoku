@@ -580,18 +580,45 @@
         End Try
     End Sub
     Public Function SolvePuzzle() As Boolean
-        ' The actual solve puzzle function
+        ' Actual puzzle solve fnc
         Dim changes As Boolean
-        Dim ExitLoop As Boolean = False
+        Dim exitLoop As Boolean = False
         Try
             Do
-                ' Perform CRME
-                changes = CheckColumnsAndRows() ' Returns True or False
+                Do
+                    Do
+                        Do
+                            ' Perform CRME
+                            changes = CheckColumnsAndRows()
+                            If (HintMode AndAlso changes) OrElse IsPuzzleSolved() Then
+                                exitLoop = True
+                                Exit Do
+                            End If
+                        Loop Until Not changes
+                        If exitLoop Then Exit Do
+                        ' Lone rangers in minigrids
+                        changes = LFLRMinigrids()
+                        If (HintMode AndAlso changes) OrElse IsPuzzleSolved() Then
+                            exitLoop = True
+                            Exit Do
+                        End If
+                    Loop Until Not changes
+                    If exitLoop Then Exit Do
+                    ' LFLR Rows
+                    changes = LFLRRows()
+                    If (HintMode AndAlso changes) OrElse IsPuzzleSolved() Then
+                        exitLoop = True
+                        Exit Do
+                    End If
+                Loop Until Not changes
+                If exitLoop Then Exit Do
+                ' LFLR Columns
+                changes = LFLRColumns()
                 If (HintMode AndAlso changes) OrElse IsPuzzleSolved() Then
-                    ExitLoop = True
+                    exitLoop = True
                     Exit Do
                 End If
-            Loop Until Not changes ' Loops until changes (which in turn calls CCAR()) returns false, which happens when a definitive value cannot be returned on a cell.
+            Loop Until Not changes
         Catch ex As Exception
             Throw New Exception("Invalid move")
         End Try
@@ -599,8 +626,8 @@
         If IsPuzzleSolved() Then
             timerSolved.Enabled = False
             Beep()
-            ToolStripStatusLabel1.Text = "****Puzzled Solved****"
-            MsgBox("Puzzle Solved")
+            ToolStripStatusLabel1.Text = "**PUZZLE SOLVED**"
+            MsgBox("Puzzle solved")
             Return True
         Else
             Return False
@@ -617,4 +644,122 @@
             Next
         Next
     End Sub
+    Public Function LFLRMinigrids() As Boolean
+        ' Looking for Lone Rangers in minigrids
+        Dim changes As Boolean = False
+        Dim nextminigrid As Boolean
+        Dim occurrence As Integer
+        Dim cPos, rPos As Integer
+        ' Check from 1 to 9 ( 9 minigrids )
+        For n As Integer = 1 To 9
+            ' Perform checks on each minigrid
+            For r As Integer = 1 To 9 Step 3
+                For c As Integer = 1 To 9 Step 3
+                    nextminigrid = False
+                    occurrence = 0
+                    For rr As Integer = 0 To 2
+                        For cc As Integer = 0 To 2
+                            If actual(c + cc, r + rr) = 0 AndAlso possible(c + cc, r + rr).Contains(n.ToString()) Then ' If there's no value in the current cell && it includes n as possible value (0-9)
+                                occurrence += 1
+                                cPos = c + cc
+                                rPos = r + cc
+                                If occurrence > 1 Then
+                                    nextminigrid = True
+                                    Exit For
+                                End If
+                            End If
+                        Next
+                        If nextminigrid Then Exit For
+                    Next
+                    If (Not nextminigrid) AndAlso occurrence = 1 Then
+                        ' There's only 1 possible number
+                        SetCell(cPos, rPos, n, 1)
+                        SetToolTip(cPos, rPos, n.ToString())
+                        ' Save move into stack
+                        Moves.Push(cPos & rPos & n.ToString())
+                        DisplayActivity("Look for lone rangers in minigrids", False)
+                        DisplayActivity("==================================", False)
+                        DisplayActivity("Inserted value " & n.ToString() & " in " & "(" & cPos & "," & rPos & ")", False)
+                        Application.DoEvents() ' Refresh board
+                        changes = True
+                        If HintMode Then Return True ' If user only wanted a hint
+                    End If
+                Next
+            Next
+        Next
+        Return changes
+    End Function
+    Public Function LFLRRows() As Boolean
+        ' Look for lone rangers in rows
+        Dim changes As Boolean = False
+        Dim occurrence As Integer
+        Dim cPos, rPos As Integer
+
+        ' Check rows, 0 to 9
+        For r As Integer = 1 To 9
+            For n As Integer = 1 To 9
+                occurrence = 0
+                For c As Integer = 1 To 9
+                    If actual(c, r) = 0 AndAlso possible(c, r).Contains(n.ToString()) Then ' If cell empty and possible values include n
+                        occurrence += 1
+                        ' If there's multiple occurrences its not a lone ranger anymore
+                        If occurrence > 1 Then Exit For
+                        cPos = c
+                        rPos = r
+                    End If
+                Next
+                If occurrence = 1 Then
+                    ' Lone ranger conf
+                    SetCell(cPos, rPos, n, 1)
+                    SetToolTip(cPos, rPos, n.ToString())
+                    ' Save to stack
+                    Moves.Push(cPos & rPos & n.ToString())
+                    DisplayActivity("Look for lone rangers in rows", False)
+                    DisplayActivity("=============================", False)
+                    DisplayActivity("Inserted value " & n.ToString() & " in " & "(" & cPos & "," & rPos & ")", False)
+                    Application.DoEvents() ' Refresh board
+                    changes = True
+                    ' If user only wants hint
+                    If HintMode Then Return True
+                End If
+            Next
+        Next
+        Return changes
+    End Function
+    Public Function LFLRColumns() As Boolean
+        ' Look for lone rangers in columns
+        Dim changes As Boolean = False
+        Dim occurrence As Integer
+        Dim cPos, rPos As Integer
+
+        ' Check columns
+        For c As Integer = 1 To 9
+            For n As Integer = 1 To 9
+                occurrence = 0
+                For r As Integer = 1 To 9
+                    If actual(c, r) = 0 AndAlso possible(c, r).Contains(n.ToString()) Then
+                        occurrence += 1
+                        ' If multiple exit
+                        If occurrence > 1 Then Exit For
+                        cPos = c
+                        rPos = r
+                    End If
+                Next
+                If occurrence = 1 Then
+                    ' lone ranger
+                    SetCell(cPos, rPos, n, 1)
+                    SetToolTip(cPos, rPos, n.ToString())
+                    ' save to stack
+                    Moves.Push(cPos & rPos & n.ToString())
+                    DisplayActivity("Look for lone rangers in columns", False)
+                    DisplayActivity("================================", False)
+                    DisplayActivity("Inserted value " & n.ToString() & " in " & "(" & cPos & "," & rPos & ")", False)
+                    Application.DoEvents() ' Refresh board
+                    changes = True
+                    If HintMode Then Return True ' If user only wanted hint
+                End If
+            Next
+        Next
+        Return changes
+    End Function
 End Class
